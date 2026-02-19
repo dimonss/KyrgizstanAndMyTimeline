@@ -9,6 +9,14 @@
     margin: 0 auto;
 }
 
+.timeline__year-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+}
+
 /* ---- Spine ---- */
 .timeline__spine {
     position: absolute;

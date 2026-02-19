@@ -53,34 +53,32 @@ export default function Timeline({ kyrgyzstanEvents, personalEvents }: Props) {
                 <motion.div className="timeline__spine-fill" style={{ height: lineHeight }} />
             </div>
 
-            {/* Year markers */}
-            {years.map((year, i) => {
-                const idx = merged.findIndex((m) => m.year === year);
+            {/* Interleaved year markers + events */}
+            {years.map((year, yi) => {
+                const eventsForYear = merged.filter((m) => m.year === year);
                 return (
-                    <motion.div
-                        key={year}
-                        className="timeline__year-marker"
-                        style={{ order: idx }}
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, margin: '-20px' }}
-                        transition={{ duration: 0.4, delay: i * 0.03 }}
-                    >
-                        <div className="timeline__year-dot" />
-                        <span className="timeline__year-label">{year}</span>
-                    </motion.div>
+                    <div key={year} className="timeline__year-group">
+                        <motion.div
+                            className="timeline__year-marker"
+                            initial={{ opacity: 0, scale: 0 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true, margin: '-20px' }}
+                            transition={{ duration: 0.4, delay: yi * 0.03 }}
+                        >
+                            <div className="timeline__year-dot" />
+                            <span className="timeline__year-label">{year}</span>
+                        </motion.div>
+                        {eventsForYear.map((item, ei) => (
+                            <TimelineEventCard
+                                key={`${item.side}-${item.year}-${item.event.title}`}
+                                event={item.event}
+                                side={item.side}
+                                index={yi * 3 + ei}
+                            />
+                        ))}
+                    </div>
                 );
             })}
-
-            {/* Events */}
-            {merged.map((item, i) => (
-                <TimelineEventCard
-                    key={`${item.side}-${item.year}-${item.event.title}`}
-                    event={item.event}
-                    side={item.side}
-                    index={i}
-                />
-            ))}
         </div>
     );
 }
