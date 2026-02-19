@@ -1,0 +1,135 @@
+.header {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.header__content {
+    max-width: 800px;
+}
+
+.header__badge {
+    display: inline-block;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: var(--color-cyan);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    padding: 6px 20px;
+    border-radius: 999px;
+    margin-bottom: 28px;
+    text-shadow: 0 0 10px var(--color-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.header__title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.header__title-line {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+}
+
+.header__title-line--kg {
+    background: linear-gradient(135deg, var(--color-cyan), #4dd0e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.4));
+}
+
+.header__title-line--me {
+    background: linear-gradient(135deg, var(--color-magenta), #f48fb1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.4));
+}
+
+.header__title-ampersand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.header__subtitle {
+    margin: 24px 0 40px;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.7;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---- Legend ---- */
+.header__legend {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+
+.header__legend-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.header__legend-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.header__legend-items {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.header__legend-item {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--c);
+    color: #000;
+    opacity: 0.85;
+}
+
+/* ---- Scroll indicator ---- */
+.header__scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.header__scroll-indicator svg {
+    opacity: 0.4;
+}
