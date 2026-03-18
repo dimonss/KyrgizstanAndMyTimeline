@@ -35,10 +35,17 @@ function getCategoryLabel(event: TimelineEvent | PersonalEvent): string {
     return 'Личное';
 }
 
+function formatEventDate(event: TimelineEvent | PersonalEvent): string {
+    const [year, month, day] = event.date.split('-');
+    if (!year || !month || !day) return event.date;
+    return `${day}.${month}.${year}`;
+}
+
 export default function TimelineEventCard({ event, side, index }: Props) {
     const color = getCategoryColor(event);
     const label = getCategoryLabel(event);
     const icon = 'icon' in event ? event.icon : undefined;
+    const eventDate = formatEventDate(event);
 
     return (
         <motion.div
@@ -60,7 +67,7 @@ export default function TimelineEventCard({ event, side, index }: Props) {
                 <div className="timeline-event__glow" />
                 <div className="timeline-event__header">
                     {icon && <span className="timeline-event__icon">{icon}</span>}
-                    <span className="timeline-event__year">{event.year}</span>
+                    <span className="timeline-event__date">{eventDate}</span>
                     <span className="timeline-event__badge" style={{ background: color }}>
                         {label}
                     </span>

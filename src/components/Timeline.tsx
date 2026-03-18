@@ -6,8 +6,8 @@ import TimelineEventCard from './TimelineEvent';
 import './Timeline.css';
 
 interface MergedEvent {
+    date: string;
     year: number;
-    month?: number;
     event: TEvent | PersonalEvent;
     side: 'left' | 'right';
 }
@@ -17,28 +17,31 @@ interface Props {
     personalEvents: PersonalEvent[];
 }
 
+function getYearFromDate(date: string): number {
+    return Number(date.slice(0, 4));
+}
+
 export default function Timeline({ kyrgyzstanEvents, personalEvents }: Props) {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll();
     const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
-    // Merge and sort events by year
+    // Merge and sort events by date
     const merged: MergedEvent[] = [
         ...kyrgyzstanEvents.map((e) => ({
-            year: e.year,
-            month: e.month,
+            date: e.date,
+            year: getYearFromDate(e.date),
             event: e,
             side: 'left' as const,
         })),
         ...personalEvents.map((e) => ({
-            year: e.year,
-            month: undefined as number | undefined,
+            date: e.date,
+            year: getYearFromDate(e.date),
             event: e,
             side: 'right' as const,
         })),
     ].sort((a, b) => {
-        if (a.year !== b.year) return a.year - b.year;
-        if (a.month && b.month) return a.month - b.month;
+        if (a.date !== b.date) return a.date.localeCompare(b.date);
         if (a.side === 'left') return -1;
         return 1;
     });
@@ -70,7 +73,7 @@ export default function Timeline({ kyrgyzstanEvents, personalEvents }: Props) {
                         </motion.div>
                         {eventsForYear.map((item, ei) => (
                             <TimelineEventCard
-                                key={`${item.side}-${item.year}-${item.event.title}`}
+                                key={`${item.side}-${item.date}-${item.event.title}`}
                                 event={item.event}
                                 side={item.side}
                                 index={yi * 3 + ei}
