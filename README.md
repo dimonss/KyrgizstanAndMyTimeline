@@ -49,7 +49,7 @@ The app will be available at `http://localhost:5173/`
 ```
 src/
 ├── data/
-│   ├── global.ts          # 15 global impact events
+│   ├── global.ts          # 16 global impact events
 │   └── personal.ts        # 8 personal milestones
 ├── components/
 │   ├── ParticleField.tsx   # Canvas particle background
@@ -121,7 +121,7 @@ npm run build
 ```
 src/
 ├── data/
-│   ├── global.ts          # 15 мировых событий
+│   ├── global.ts          # 16 мировых событий
 │   └── personal.ts        # 8 личных вех
 ├── components/
 │   ├── ParticleField.tsx   # Canvas-фон с частицами

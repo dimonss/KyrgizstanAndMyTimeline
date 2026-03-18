@@ -7,9 +7,15 @@ export interface PersonalEvent {
 
 export const personalEvents: PersonalEvent[] = [
     {
-        date: '1996-01-01',
+        date: '1996-08-20',
         title: 'Рождение',
         description: 'Появление на свет — начало пути.',
+        icon: '👶',
+    },
+    {
+        date: '1998-03-03',
+        title: 'Рождение сестры',
+        description: 'Появление на свет — сестры.',
         icon: '👶',
     },
     {
@@ -37,18 +43,25 @@ export const personalEvents: PersonalEvent[] = [
         icon: '🔬',
     },
     {
-        date: '2020-01-01',
+        date: '2020-11-01',
         title: 'Beeline — Разработчик',
         description:
             'Должность фронтенд / бэкенд разработчика в крупной IT-компании Beeline.',
         icon: '💻',
     },
     {
-        date: '2024-01-01',
+        date: '2024-06-01',
         title: 'MBANK — Lead Frontend',
         description:
             'Переход в MBANK на должность лид фронтенд-разработки. Новая ступень карьеры.',
         icon: '🚀',
+    },
+    {
+        date: '2025-02-27',
+        title: 'Активное использование AI-ассистентов в кодинге',
+        description:
+            'Начал регулярно использовать AI-ассистентов для разработки: ускорил прототипирование, рефакторинг и проверку идей.',
+        icon: '🤖',
     },
     {
         date: '2026-03-18',
