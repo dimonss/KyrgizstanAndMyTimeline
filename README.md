@@ -1,14 +1,14 @@
-# 🇰🇬 Kyrgyzstan & My Timeline
+# 🌍 World Events & My Timeline
 
-An interactive futuristic web application that presents two parallel timelines — **key historical events of Kyrgyzstan** (1990–2025) and **personal life milestones** (1996–2024) — on a single vertical axis with modern visual effects.
+An interactive futuristic web application that presents two parallel timelines — **global events that influenced me** (1991–2025) and **personal life milestones** (1996–2026) — on a single vertical axis with modern visual effects.
 
 ## ✨ Features
 
-- **Dual Timeline** — Kyrgyzstan events on the left, personal milestones on the right
+- **Dual Timeline** — global events on the left, personal milestones on the right
 - **Particle Starfield** — Canvas-based animated background with glowing particles and connections
 - **Glassmorphism Cards** — Semi-transparent event cards with neon glow borders
 - **Scroll Animations** — Framer Motion `whileInView` triggers for smooth card reveals
-- **Category Color Coding** — Independence (cyan), Crisis (red), Revolution (amber), Modern (green), Personal (magenta)
+- **Category Color Coding** — Technology (cyan), Economy (red), Geopolitics (amber), Society (green), Personal (magenta)
 - **Animated Timeline Spine** — Gradient line that tracks scroll progress
 - **Responsive Design** — Mobile-friendly single-column layout
 
@@ -49,8 +49,8 @@ The app will be available at `http://localhost:5173/`
 ```
 src/
 ├── data/
-│   ├── kyrgyzstan.ts      # 16 historical events
-│   └── personal.ts        # 7 personal milestones
+│   ├── global.ts          # 15 global impact events
+│   └── personal.ts        # 8 personal milestones
 ├── components/
 │   ├── ParticleField.tsx   # Canvas particle background
 │   ├── Header.tsx          # Hero section with legend
@@ -70,17 +70,17 @@ MIT
 
 ---
 
-# 🇰🇬 Кыргызстан & Мой Путь
+# 🌍 Мир вокруг меня & Мой Путь
 
-Интерактивное футуристическое веб-приложение с двумя параллельными линиями времени — **ключевые исторические события Кыргызстана** (1990–2025) и **личные вехи жизни** (1996–2024) — на единой вертикальной оси с современными визуальными эффектами.
+Интерактивное футуристическое веб-приложение с двумя параллельными линиями времени — **мировые события, которые влияли на меня** (1991–2025) и **личные вехи жизни** (1996–2026) — на единой вертикальной оси с современными визуальными эффектами.
 
 ## ✨ Возможности
 
-- **Двойной таймлайн** — события Кыргызстана слева, личные вехи справа
+- **Двойной таймлайн** — мировые события слева, личные вехи справа
 - **Частицы и звёзды** — анимированный canvas-фон со светящимися частицами и соединениями
 - **Glassmorphism-карточки** — полупрозрачные карточки с неоновыми рамками
 - **Scroll-анимации** — плавное появление карточек при прокрутке (Framer Motion)
-- **Цветовая кодировка** — Независимость (голубой), Кризис (красный), Революция (жёлтый), Современность (зелёный), Личное (маджента)
+- **Цветовая кодировка** — Технологии (голубой), Экономика (красный), Геополитика (жёлтый), Общество (зелёный), Личное (маджента)
 - **Анимированная линия** — градиентная линия, отслеживающая прогресс прокрутки
 - **Адаптивный дизайн** — мобильная версия с одной колонкой
 
@@ -121,8 +121,8 @@ npm run build
 ```
 src/
 ├── data/
-│   ├── kyrgyzstan.ts      # 16 исторических событий
-│   └── personal.ts        # 7 личных вех
+│   ├── global.ts          # 15 мировых событий
+│   └── personal.ts        # 8 личных вех
 ├── components/
 │   ├── ParticleField.tsx   # Canvas-фон с частицами
 │   ├── Header.tsx          # Герой-секция с легендой
