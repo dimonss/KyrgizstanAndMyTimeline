@@ -71,6 +71,12 @@ export const personalEvents: PersonalEvent[] = [
         icon: '🤖',
     },
     {
+        date: '2025-06-14',
+        title: 'Свадьба',
+        description: 'Официальное заключение брака и празднование создания семьи.',
+        icon: '💍',
+    },
+    {
         date: '2026-03-18',
         title: 'Первые инвестиции в рынок США',
         description:
