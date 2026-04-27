@@ -73,7 +73,7 @@ export default function Timeline({ globalEvents, personalEvents }: Props) {
                         </motion.div>
                         {eventsForYear.map((item, ei) => (
                             <TimelineEventCard
-                                key={`${item.side}-${item.date}-${item.event.title}`}
+                                key={`${item.side}-${item.date}-${ei}`}
                                 event={item.event}
                                 side={item.side}
                                 index={ei}

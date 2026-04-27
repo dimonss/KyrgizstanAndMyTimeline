@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import type { CSSProperties } from 'react';
 import type { GlobalEvent } from '../data/global';
 import type { PersonalEvent } from '../data/personal';
+import { localized, useI18n, type Language } from '../i18n';
 import './TimelineEvent.css';
 
 interface Props {
@@ -22,30 +24,24 @@ function getCategoryColor(event: GlobalEvent | PersonalEvent): string {
     return 'var(--color-magenta)';
 }
 
-function getCategoryLabel(event: GlobalEvent | PersonalEvent): string {
-    if ('category' in event) {
-        const map: Record<string, string> = {
-            technology: 'Технологии',
-            economy: 'Экономика',
-            geopolitics: 'Геополитика',
-            society: 'Общество',
-        };
-        return map[event.category] || '';
-    }
-    return 'Личное';
-}
-
-function formatEventDate(event: GlobalEvent | PersonalEvent): string {
+function formatEventDate(event: GlobalEvent | PersonalEvent, language: Language): string {
     const [year, month, day] = event.date.split('-');
     if (!year || !month || !day) return event.date;
-    return `${day}.${month}.${year}`;
+
+    const date = new Date(Number(year), Number(month) - 1, Number(day));
+    return new Intl.DateTimeFormat(language === 'ru' ? 'ru-RU' : 'en-US', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+    }).format(date);
 }
 
 export default function TimelineEventCard({ event, side, index }: Props) {
+    const { language, t } = useI18n();
     const color = getCategoryColor(event);
-    const label = getCategoryLabel(event);
+    const label = 'category' in event ? t.categories[event.category] : t.personalCategory;
     const icon = 'icon' in event ? event.icon : undefined;
-    const eventDate = formatEventDate(event);
+    const eventDate = formatEventDate(event, language);
 
     return (
         <motion.div
@@ -62,7 +58,7 @@ export default function TimelineEventCard({ event, side, index }: Props) {
         >
             <div
                 className="timeline-event__card"
-                style={{ '--accent': color } as React.CSSProperties}
+                style={{ '--accent': color } as CSSProperties}
             >
                 <div className="timeline-event__glow" />
                 <div className="timeline-event__header">
@@ -72,8 +68,8 @@ export default function TimelineEventCard({ event, side, index }: Props) {
                         {label}
                     </span>
                 </div>
-                <h3 className="timeline-event__title">{event.title}</h3>
-                <p className="timeline-event__description">{event.description}</p>
+                <h3 className="timeline-event__title">{localized(event.title, language)}</h3>
+                <p className="timeline-event__description">{localized(event.description, language)}</p>
                 <div
                     className="timeline-event__connector"
                     style={{ background: color }}
