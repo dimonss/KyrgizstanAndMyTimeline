@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import type { GlobalEvent } from '../data/global';
 import type { PersonalEvent } from '../data/personal';
+import { useLanguage } from '../i18n/LanguageContext';
 import './TimelineEvent.css';
 
 interface Props {
@@ -22,19 +23,6 @@ function getCategoryColor(event: GlobalEvent | PersonalEvent): string {
     return 'var(--color-magenta)';
 }
 
-function getCategoryLabel(event: GlobalEvent | PersonalEvent): string {
-    if ('category' in event) {
-        const map: Record<string, string> = {
-            technology: 'Технологии',
-            economy: 'Экономика',
-            geopolitics: 'Геополитика',
-            society: 'Общество',
-        };
-        return map[event.category] || '';
-    }
-    return 'Личное';
-}
-
 function formatEventDate(event: GlobalEvent | PersonalEvent): string {
     const [year, month, day] = event.date.split('-');
     if (!year || !month || !day) return event.date;
@@ -42,10 +30,27 @@ function formatEventDate(event: GlobalEvent | PersonalEvent): string {
 }
 
 export default function TimelineEventCard({ event, side, index }: Props) {
+    const { t, language } = useLanguage();
+    
+    function getCategoryLabel(event: GlobalEvent | PersonalEvent): string {
+        if ('category' in event) {
+            const map: Record<string, string> = {
+                technology: t('header.legend.tech'),
+                economy: t('header.legend.econ'),
+                geopolitics: t('header.legend.geo'),
+                society: t('header.legend.society'),
+            };
+            return map[event.category] || '';
+        }
+        return language === 'ru' ? 'Личное' : 'Personal';
+    }
+
     const color = getCategoryColor(event);
     const label = getCategoryLabel(event);
     const icon = 'icon' in event ? event.icon : undefined;
     const eventDate = formatEventDate(event);
+    const title = typeof event.title === 'string' ? event.title : event.title[language];
+    const description = typeof event.description === 'string' ? event.description : event.description[language];
 
     return (
         <motion.div
@@ -72,8 +77,8 @@ export default function TimelineEventCard({ event, side, index }: Props) {
                         {label}
                     </span>
                 </div>
-                <h3 className="timeline-event__title">{event.title}</h3>
-                <p className="timeline-event__description">{event.description}</p>
+                <h3 className="timeline-event__title">{title}</h3>
+                <p className="timeline-event__description">{description}</p>
                 <div
                     className="timeline-event__connector"
                     style={{ background: color }}

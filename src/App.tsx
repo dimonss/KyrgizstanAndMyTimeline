@@ -3,8 +3,11 @@ import Header from './components/Header';
 import Timeline from './components/Timeline';
 import { globalEvents } from './data/global';
 import { personalEvents } from './data/personal';
+import { useLanguage } from './i18n/LanguageContext';
 
 export default function App() {
+  const { t } = useLanguage();
+
   return (
     <>
       <ParticleField />
@@ -27,7 +30,7 @@ export default function App() {
           letterSpacing: '3px',
         }}
       >
-        WORLD EVENTS & MY TIMELINE — {new Date().getFullYear()}
+        {t('footer.text')}{new Date().getFullYear()}
       </footer>
     </>
   );
